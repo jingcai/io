@@ -1,0 +1,70 @@
+
+ <div id="container_cover"></div>
+        <div class="picside" style="background-image: url(/img/big/5f13c996hc9c49af219ea.jpeg);">
+            <div class="cover">
+                <h1 class="font-title">晶彩家园</h1>
+                <p class="info">无字真经 有为性德
+                    <br/>佛道自性 生命永恒 <a class="font-icon" href="http://baidu.com/about">    了解更多</a>
+                </p>
+                <div class="line"></div>
+                <a class="button green register" href="http://baidu.com/register">
+                    <span class="font-icon"></span>注册</a>
+            </div>
+        </div>
+        <div class="recom" id="recom">
+            <ul class="collect_list">
+                <li style="height: 272.8px;">
+                    <a href="http://baidu.com/collect/41" style="background-image: url(/img/pic/537dd436t7afe6b17fab1.jpg);">
+                        <div class="over"><b>晶彩音乐</b><i>13 文章</i>  <i>, 67 推荐</i>
+                        </div>
+                    </a>
+                </li>
+                <li style="height: 271.70000000000005px;">
+                    <a href="http://baidu.com/collect/42" style="background-image: url(/img/pic/507a7061tc4684d99ecaf.jpg);">
+                        <div class="over"><b>晶彩视频</b><i>3 文章</i>  <i>, 24 推荐</i>
+                        </div>
+                    </a>
+                </li>
+                <li style="height: 272.8px;">
+                    <a href="http://baidu.com/collect/52" style="background-image: url(/img/pic/507a7061tc468cb04f3bb.jpg);">
+                        <div class="over"><b>晶彩图片</b><i>50 文章</i><i>, 1 订阅</i>  <i>, 19 推荐</i>
+                        </div>
+                    </a>
+                </li>
+                <div class="clear"></div>
+            </ul>
+            <!--collect_list!-->
+
+
+
+            <ul class="article_list" ng-controller="BlogCtr">
+                <li ng-repeat="blog in blogs">
+
+                    <a class="avat" href="http://baidu.com/user/139" title="{{blog.title}}">
+                        <img class="avatar" src="./moban_files/139.jpg">
+                    </a>
+                    <h3 class="title font-title"><a href="http://baidu.com/article/258">{{blog.title}}</a>
+                    </h3>
+                    <p class="snippet">　　{{blog.content|htmlToPlaintext |limitTo:100}}</p>
+                    <p class="foot font-icon"><a class="collect" href="http://baidu.com/collect/69" title="专辑">{{blog.blog_class}} </a><a class="user" href="http://baidu.com/user/139" title="作者">禹晖 原创</a><b title="推荐"> 3</b>
+                    </p>
+
+                </li>
+
+
+            </ul>
+            <button class="more_article">更多文章</button>
+            <div class="clear"></div>
+            <div id="footer">
+                <div class="left">
+                    <span>© 2013 晶彩</span>
+                </div>
+                <a class="logo" href="./moban_files/moban.html"></a>
+                <div class="right"><a href="./moban_files/moban.html">关于</a>
+
+
+                </div>
+            </div>
+            <!--footer!-->
+            <!--recom!-->
+        </div>

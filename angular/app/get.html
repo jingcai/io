@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh" ng-app="myApp">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>
+        晶彩 · 家园
+    </title>
+    <!-- Bootstrap core CSS -->
+    <link href="./dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Documentation extras -->
+    <link href="./get_files/docs.css" rel="stylesheet">
+    <link href="./get_files/pygments-manni.css" rel="stylesheet">
+
+    <!--[if lt IE 9]><script src="../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+<![endif]-->
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://getbootstrap.com/docs-assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="http://getbootstrap.com/docs-assets/ico/favicon.png">
+    <style type="text/css">
+    li {
+        list-style:none;
+    }
+    .text-red {
+        color:red;
+    }
+    .text-blue {
+        color:blue;
+    }
+    .footer-links li {
+        margin-left:30px
+    }
+    .pagination {
+        display: inline-block;
+        padding-left: 0;
+        margin: 20px 0;
+        border-radius: 1px;
+    }
+    .pagination > li {
+        display: inline;
+    }
+    .pagination > li > a, .pagination > li > span {
+        position: relative;
+        float: left;
+        padding: 6px 12px;
+        line-height: 1.428571429;
+        text-decoration: none;
+        background-color: #ffffff;
+        border: 1px solid #dddddd;
+        margin: 0.5px;
+    }
+    .pagination > li:first-child > a, .pagination > li:first-child > span {
+        margin-left: 0;
+        border-bottom-left-radius: 1px;
+        border-top-left-radius: 1px;
+    }
+    .pagination > li:last-child > a, .pagination > li:last-child > span {
+        border-top-right-radius: 1px;
+        border-bottom-right-radius: 1px;
+    }
+    </style>
+    <script>
+    window["_GOOG_TRANS_EXT_VER"] = "1";
+    </script>
+</head>
+
+<body ng-controller="MyCtrl1">
+    <a class="sr-only" href="#content">转到主页</a>
+
+    <!-- Docs master nav -->
+    <header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                    <span class="sr-only">切换导航</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="/" target="_blank" class="navbar-brand">晶彩·家园</a>
+            </div>
+            <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+                <ul class="nav navbar-nav">
+                    <li class="{{hd[0]==path?'active':''}}" ng-repeat="hd in headerJson">
+                        <a ng-click="pathchanged(hd[0])"><span ng-bind-html="hd[1]"></span></a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right ">
+                    <li>
+                        <!-- <a href="/ ">关于</a> -->
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+    <!-- Docs page layout -->
+    <div class="bs-header " id="content ">
+        <div class="container ">
+            <h1><span ng-bind-html='currentHeader[1]'></span></h1>
+            <p>&nbsp;</p>
+            <div ng-bind-html='currentHeader[2]'></div>
+        </div>
+    </div>
+
+
+
+    <div ng-switch on="path ">
+        <div ng-switch-when="music ">
+            <my-music></my-music>
+        </div>
+        <div ng-switch-when="events ">
+            <my-events></my-events>
+        </div>
+        <div ng-switch-default>
+            <my-start></my-start>
+        </div>
+    </div>
+
+    <!-- Footer
+    ================================================== -->
+    <footer class="bs-footer " role="contentinfo ">
+
+        <ul class="footer-links " style="text-align: center; ">
+            <li>
+                <a href="http://blog.sina.com.cn/liuyuhsd ">晶彩sina博客</a>
+            </li>
+            <li>
+                <a href="http://qun.qzone.qq.com/group/276681785 ">晶彩花园QQ群：276681785</a>
+            </li>
+            <li>
+                <a href="http://y.baidu.com/jingcai ">百度原创音乐 · 晶彩乐团</a>
+            </li>
+        </ul>
+
+    </footer>
+    <!-- JS and analytics only. -->
+    <!-- Bootstrap core JavaScript
+================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./lib/angular/angular.js "></script>
+    <script src="./lib/angular/angular-route.js "></script>
+    <script src="./lib/angular/angular-sanitize.js "></script>
+
+    <script src="/js/app.js "></script>
+    <script src="/js/services.js "></script>
+    <script src="/js/controllers.js "></script>
+    <script src="/js/filters.js "></script>
+    <script src="/js/directives.js "></script>
+
+
+</body>
+
+</html>

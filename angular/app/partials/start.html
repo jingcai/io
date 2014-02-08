@@ -1,0 +1,50 @@
+  <div class="container bs-docs-container" ng-controller="BlogCtr">
+        <div class="row">
+
+            <div class="col-md-3" ng-model="category" >    
+                              
+                            <h4 ng-click="category='888'">888网格
+                                <span class="label label-success">{{(blogs|filter:'888').length}}</span>
+                            </h4>                                                
+                            <h4 ng-click="category='0的'">0的法则
+                                <span class="label label-success">{{(blogs|filter:'0的').length}}</span>
+                            </h4>
+                            
+
+                            <h4 ng-click="category='卦'">天卦
+                                <span class="label label-success">{{(blogs|filter:'卦').length}}</span>
+                            </h4>                                                
+                            <h4 ng-click="category=''">全部原创                                
+                                <span class="label label-info">{{blogs.length}}</span>
+                            </h4>    
+
+                                                      
+
+                            
+                <div class="bs-sidebar affix-top col-md-12" data-spy="affix" data-offset-top="240" data-offset-bottom="200" >
+                    <ul class="nav bs-sidenav">
+                        <li ng-repeat="blog in (blogs|filter:category).slice(pageStart,pageStart+pagesize)" ng-class="blog.hash==currenthash?'active':''">
+                            <a ng-click="clickBlog(blog.hash)" ng-bind-html="blog.title"></a>
+                        </li>
+                    </ul>
+                    <ul class="pagination" ng-hide="Math.ceil((blogs|filter:category).length/pagesize)==1">
+                        <li ng-class="$index==pageStart/pagesize?'active':''"  ng-repeat="blog in blogs.slice(0,Math.ceil((blogs|filter:category).length/pagesize))" >
+                            <span    ng-click="clickPage($index)">{{$index+1}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-7 " role="main">
+                <div class="bs-docs-section">
+
+                    <div class="page-header">
+                        <h1 id="js-overview" ng-bind-html="wen.title"></h1>
+                    </div>
+                    <li ng-bind-html="wen.content">
+                    </li>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
