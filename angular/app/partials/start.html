@@ -2,6 +2,9 @@
         <div class="row">
 
             <div class="col-md-3" ng-model="category" >    
+                            <h4 ng-click="category='重点推荐'">重点推荐
+                                <span class="label label-success">{{(blogs|filter:'重点推荐').length}}</span>
+                            </h4>                                                
                               
                             <h4 ng-click="category='888'">888网格
                                 <span class="label label-success">{{(blogs|filter:'888').length}}</span>
@@ -17,10 +20,7 @@
                             <h4 ng-click="category=''">全部原创                                
                                 <span class="label label-info">{{blogs.length}}</span>
                             </h4>    
-
-                                                      
-
-                            
+                                                                                  
                 <div class="bs-sidebar affix-top col-md-12" data-spy="affix" data-offset-top="240" data-offset-bottom="200" >
                     <ul class="nav bs-sidenav">
                         <li ng-repeat="blog in (blogs|filter:category).slice(pageStart,pageStart+pagesize)" ng-class="blog.hash==currenthash?'active':''">

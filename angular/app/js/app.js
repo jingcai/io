@@ -69,12 +69,27 @@ filter('htmlToPlaintext', function() {
 function BlogCtr($scope, $http, $sce, $log, $location) {
     $scope.start = 0;
     $scope.pagesize = 15;
+
+
     //有两种api 一个是list 一个是单个的
     $http.get('/data/bloglist?start=' + $scope.start + '&limit=500').success(function(data) {
+        var keywordsMap = {
+            '重点推荐': ['http://blog.sina.com.cn/s/blog_5f13c9960101fp72.html', 'http://blog.sina.com.cn/s/blog_5f13c9960101dfgk.html', 'http://blog.sina.com.cn/s/blog_5f13c99601015ofu.html', 'http://blog.sina.com.cn/s/blog_5f13c99601016hcq.html', 'http://blog.sina.com.cn/s/blog_5f13c9960101acr7.html', 'http://blog.sina.com.cn/s/blog_5f13c9960101bkhc.html', 'http://blog.sina.com.cn/s/blog_5f13c9960101bm7t.html', 'http://blog.sina.com.cn/s/blog_5f13c99601018otw.html', 'http://blog.sina.com.cn/s/blog_5f13c99601015p38.html', 'http://blog.sina.com.cn/s/blog_5f13c99601015qrr.html', 'http://blog.sina.com.cn/s/blog_5f13c996010141uw.html', 'http://blog.sina.com.cn/s/blog_5f13c99601013227.html', 'http://blog.sina.com.cn/s/blog_5f13c99601012w9y.html'],
+        };
+
         for (var d in data) {
             data[d].hash = data[d].url.split('/').pop().split('.').shift()
             data[d].title = data[d].title.trim()
+            for (var d1 in keywordsMap) {
+                for (var d2 in keywordsMap[d1]) {
+                    if (data[d].url == keywordsMap[d1][d2]) {
+                            data[d].blog_class=d1;
+                    }
+                }
+
+            }
         }
+
 
         $scope.blogs = data;
         startRequest(data[0].hash)
@@ -108,5 +123,5 @@ function BlogCtr($scope, $http, $sce, $log, $location) {
         $scope.pageStart = page * $scope.pagesize;
     }
 
-   
+
 }
