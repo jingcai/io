@@ -76,10 +76,11 @@ function BlogCtr($scope, $http, $sce, $log, $location) {
         var keywordsMap = {
             '重点推荐': ['http://blog.sina.com.cn/s/blog_5f13c9960101fp72.html', 'http://blog.sina.com.cn/s/blog_5f13c9960101dfgk.html', 'http://blog.sina.com.cn/s/blog_5f13c99601015ofu.html', 'http://blog.sina.com.cn/s/blog_5f13c99601016hcq.html', 'http://blog.sina.com.cn/s/blog_5f13c9960101acr7.html', 'http://blog.sina.com.cn/s/blog_5f13c9960101bkhc.html', 'http://blog.sina.com.cn/s/blog_5f13c9960101bm7t.html', 'http://blog.sina.com.cn/s/blog_5f13c99601018otw.html', 'http://blog.sina.com.cn/s/blog_5f13c99601015p38.html', 'http://blog.sina.com.cn/s/blog_5f13c99601015qrr.html', 'http://blog.sina.com.cn/s/blog_5f13c996010141uw.html', 'http://blog.sina.com.cn/s/blog_5f13c99601013227.html', 'http://blog.sina.com.cn/s/blog_5f13c99601012w9y.html'],
         };
-        var zhiding = ['http://blog.sina.com.cn/s/blog_5f13c9960101fp72.html', 'http://blog.sina.com.cn/s/blog_5f13c9960101dfgk.html', 'http://blog.sina.com.cn/s/blog_5f13c99601015ofu.html', 'http://blog.sina.com.cn/s/blog_5f13c99601016hcq.html', 'http://blog.sina.com.cn/s/blog_5f13c9960101acr7.html', 'http://blog.sina.com.cn/s/blog_5f13c9960101bkhc.html', 'http://blog.sina.com.cn/s/blog_5f13c9960101bm7t.html', 'http://blog.sina.com.cn/s/blog_5f13c99601018otw.html', 'http://blog.sina.com.cn/s/blog_5f13c99601015p38.html', 'http://blog.sina.com.cn/s/blog_5f13c99601015qrr.html', 'http://blog.sina.com.cn/s/blog_5f13c996010141uw.html', 'http://blog.sina.com.cn/s/blog_5f13c99601013227.html', 'http://blog.sina.com.cn/s/blog_5f13c99601012w9y.html'];
+        var zhiding = ['http://blog.sina.com.cn/s/blog_5f13c9960101fp72.html', 'http://blog.sina.com.cn/s/blog_5f13c99601012aa8.html', 'http://blog.sina.com.cn/s/blog_5f13c9960101dfgk.html', 'http://blog.sina.com.cn/s/blog_5f13c99601015ofu.html', 'http://blog.sina.com.cn/s/blog_5f13c99601016hcq.html', 'http://blog.sina.com.cn/s/blog_5f13c9960101acr7.html', 'http://blog.sina.com.cn/s/blog_5f13c9960101bkhc.html', 'http://blog.sina.com.cn/s/blog_5f13c9960101bm7t.html', 'http://blog.sina.com.cn/s/blog_5f13c99601018otw.html', 'http://blog.sina.com.cn/s/blog_5f13c99601015p38.html', 'http://blog.sina.com.cn/s/blog_5f13c99601015qrr.html', 'http://blog.sina.com.cn/s/blog_5f13c996010141uw.html', 'http://blog.sina.com.cn/s/blog_5f13c99601013227.html', 'http://blog.sina.com.cn/s/blog_5f13c99601012w9y.html'];
 
         var tmpdata = [];
-        var tmpdata1=[]
+        var tmpdata1 = [];
+        var tmpdata2 = [];
         for (var d in data) {
             data[d].hash = data[d].url.split('/').pop().split('.').shift()
             data[d].title = data[d].title.trim()
@@ -95,20 +96,26 @@ function BlogCtr($scope, $http, $sce, $log, $location) {
 
             tmpdata.push(data[d]);
             if (zhiding.indexOf(data[d].url) > -1) {
-                tmpdata.pop()  
-                tmpdata1.push(data[d])              
+                tmpdata.pop()
+                tmpdata1.push(data[d])
             }
 
         }
-        data=tmpdata1.concat(tmpdata);
-        // for (var d in data) {
-        //     for(var d1 in zhiding){
-        //         if(zhiding[d1]==data[d].url){
-        //             data.unshift[data[d]];
-        //         }
-        //     }
 
-        // }
+        //按照置顶的顺序显示，加亮
+        for (var d in zhiding) {
+            for (var d1 in tmpdata1) {
+                if (tmpdata1[d1].url == zhiding[d]) {
+                    tmpdata1[d1].title="<span style='color:red'>【置顶】</span>"+tmpdata1[d1].title;
+                    tmpdata1[d1].title=$sce.trustAsHtml(tmpdata1[d1].title);
+                    tmpdata2.push(tmpdata1[d1])
+                }
+            }
+
+        }
+
+        data = tmpdata2.concat(tmpdata);
+
 
 
         $scope.blogs = data;
