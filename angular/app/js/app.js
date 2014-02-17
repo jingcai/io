@@ -73,10 +73,15 @@ function BlogCtr($scope, $http, $sce, $log, $location) {
 
     //有两种api 一个是list 一个是单个的
     $http.get('/data/bloglist?start=' + $scope.start + '&limit=500').success(function(data) {
+
+        //这里可以添加关键字
+
         var keywordsMap = {
             '重点推荐': ['http://blog.sina.com.cn/s/blog_5f13c9960101fp72.html', 'http://blog.sina.com.cn/s/blog_5f13c9960101dfgk.html', 'http://blog.sina.com.cn/s/blog_5f13c99601015ofu.html', 'http://blog.sina.com.cn/s/blog_5f13c99601016hcq.html', 'http://blog.sina.com.cn/s/blog_5f13c9960101acr7.html', 'http://blog.sina.com.cn/s/blog_5f13c9960101bkhc.html', 'http://blog.sina.com.cn/s/blog_5f13c9960101bm7t.html', 'http://blog.sina.com.cn/s/blog_5f13c99601018otw.html', 'http://blog.sina.com.cn/s/blog_5f13c99601015p38.html', 'http://blog.sina.com.cn/s/blog_5f13c99601015qrr.html', 'http://blog.sina.com.cn/s/blog_5f13c996010141uw.html', 'http://blog.sina.com.cn/s/blog_5f13c99601013227.html', 'http://blog.sina.com.cn/s/blog_5f13c99601012w9y.html'],
         };
-        var zhiding = ['http://blog.sina.com.cn/s/blog_5f13c9960101fp72.html', 'http://blog.sina.com.cn/s/blog_5f13c99601012aa8.html', 'http://blog.sina.com.cn/s/blog_5f13c9960101dfgk.html', 'http://blog.sina.com.cn/s/blog_5f13c99601015ofu.html', 'http://blog.sina.com.cn/s/blog_5f13c99601016hcq.html', 'http://blog.sina.com.cn/s/blog_5f13c9960101acr7.html', 'http://blog.sina.com.cn/s/blog_5f13c9960101bkhc.html', 'http://blog.sina.com.cn/s/blog_5f13c9960101bm7t.html', 'http://blog.sina.com.cn/s/blog_5f13c99601018otw.html', 'http://blog.sina.com.cn/s/blog_5f13c99601015p38.html', 'http://blog.sina.com.cn/s/blog_5f13c99601015qrr.html', 'http://blog.sina.com.cn/s/blog_5f13c996010141uw.html', 'http://blog.sina.com.cn/s/blog_5f13c99601013227.html', 'http://blog.sina.com.cn/s/blog_5f13c99601012w9y.html'];
+
+        //这里可以将文章置顶
+        var zhiding = ['http://blog.sina.com.cn/s/blog_5f13c9960101fp72.html', 'http://blog.sina.com.cn/s/blog_5f13c99601012aa8.html', 'http://blog.sina.com.cn/s/blog_5f13c99601010v3v.html','http://blog.sina.com.cn/s/blog_5f13c9960101dfgk.html', 'http://blog.sina.com.cn/s/blog_5f13c99601015ofu.html', 'http://blog.sina.com.cn/s/blog_5f13c99601016hcq.html', 'http://blog.sina.com.cn/s/blog_5f13c9960101acr7.html', 'http://blog.sina.com.cn/s/blog_5f13c9960101bkhc.html', 'http://blog.sina.com.cn/s/blog_5f13c9960101bm7t.html', 'http://blog.sina.com.cn/s/blog_5f13c99601018otw.html', 'http://blog.sina.com.cn/s/blog_5f13c99601015p38.html', 'http://blog.sina.com.cn/s/blog_5f13c99601015qrr.html', 'http://blog.sina.com.cn/s/blog_5f13c996010141uw.html', 'http://blog.sina.com.cn/s/blog_5f13c99601013227.html', 'http://blog.sina.com.cn/s/blog_5f13c99601012w9y.html'];
 
         var tmpdata = [];
         var tmpdata1 = [];
