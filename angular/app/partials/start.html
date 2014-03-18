@@ -21,8 +21,8 @@
                                 <span class="label label-info">{{blogs.length}}</span>
                             </h4>    
                                                                                   
-                <div class="bs-sidebar affix-top col-md-12" data-spy="affix" data-offset-top="240" data-offset-bottom="200" >
-                    <ul class="nav bs-sidenav">
+                <div class="bs-docs-sidebar affix-top col-md-12" data-spy="affix" data-offset-top="240" data-offset-bottom="200" >
+                    <ul class="nav bs-docs-sidenav">
                         <li ng-repeat="blog in (blogs|filter:category).slice(pageStart,pageStart+pagesize)" ng-class="blog.hash==currenthash?'active':''">
                             <a ng-click="clickBlog(blog.hash)" ng-bind-html="blog.title"></a>
                         </li>
