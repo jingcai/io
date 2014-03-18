@@ -19,6 +19,7 @@ controller('MyCtrl2', [
         // $scope.path = $location.path().split('/')[1]; //路由关键点，没必要纠结                   
         console.log($location.search());
         $scope.path = $location.search().section
+        $scope.header="晶彩·家园";
         $scope.headerJson = [
             ['start', '原创文章', "禹晖永远不会出版任何书籍或自传，因为”人者见人，觉者见觉，迷者见迷……”，<br>禹晖博客空间是个灵性知识”数据大超市” ，随性自取……<br>禹晖的课程只是”人以类聚”的集体共振，生命数据升华与超越的物理实相见证过程……"],
             // ['forward', "他山之石", "银河联邦的各种通灵信息比较复杂繁多，禹晖所转发的相关银河联邦信息 基本是经过大宇宙中心过滤识别后再发出，因为这些信息是源头自己发送出去的。"],
