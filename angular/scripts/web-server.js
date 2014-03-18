@@ -116,8 +116,7 @@ StaticServlet.prototype.handleRequest = function(req, res) {
     var self = this;
     if (req.headers['user-agent']&&req.url.indexOf("get.html") > 0) {
         if (req.headers['user-agent'].indexOf('MSIE 8.0') >= 0 || req.headers['user-agent'].indexOf('MSIE 7.0') >= 0 || req.headers['user-agent'].indexOf('MSIE 6.0') >= 0) {
-            var redirectUrl = url.format(url.parse(url.format(req.url)));
-            console.log("-----------跳转到百度");
+            var redirectUrl = url.format(url.parse(url.format(req.url)));            
             return self.sendRedirect_(req, res, 'http://888000.org');
         }
     }
