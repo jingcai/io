@@ -121,10 +121,13 @@ function BlogCtr($scope, $http, $sce, $log, $location) {
 
         data = tmpdata2.concat(tmpdata);
 
-
-
         $scope.blogs = data;
+        if ($location.search().blogid) {
+        startRequest($location.search().blogid)    
+        }else{
         startRequest(data[0].hash)
+        }
+        
     });
     var startRequest = function(blogid) {
         $http.get('/data/blogcontent?blogid=' + blogid).success(function(datas) {
