@@ -1,0 +1,12 @@
+<% if (data.length) { %>
+  <ul style='list-style-type:none'>
+    <% data.forEach(function(name){ %>
+      <li ><a href="?blogid=<%= name.id %>"><%= name.title %> </a></li>
+    <% }) %>
+  </ul>
+<% } %>
+
+
+  
+
+

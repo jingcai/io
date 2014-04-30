@@ -171,12 +171,12 @@ StaticServlet.prototype.handleRequest = function(req, res) {
         var exec = require('child_process').exec,
             last = exec('pushd .. && git pull  && popd');
 
-         res.writeHead(200, {
+        res.writeHead(200, {
             'Content-Type': 'application/json'
         });
-        
+
         last.stdout.on('data', function(data) {
-            res.write(JSON.stringify(data, null, 2))                    
+            res.write(JSON.stringify(data, null, 2))
             console.log('标准输出：' + data);
         });
 
@@ -184,6 +184,53 @@ StaticServlet.prototype.handleRequest = function(req, res) {
             console.log('子进程已关闭，代码：' + code);
             res.end();
         });
+        /*seo 方案*/
+    } else if (req.url.pathname.indexOf("/archive.html") == 0) {
+        var ejs = require('ejs'),            
+            path = '../app/archive.ejs',
+            str1 = fs.readFileSync(path, 'utf8');
+        if (req.url.search) {
+            console.log(req.url.search);
+            r.table("sinablog").filter({
+                id: req.url.search.split('=')[1]
+            }).run(connection, function(err, cursor) {
+                if (err) throw err;
+                cursor.toArray(function(err, result) {
+                    if (err) throw err;                    
+                    res.writeHead(200, {
+                        'Content-Type':'text/html'
+                    });
+                    
+                    if (result.length>0) {
+                    res.write(result[0].content);                        
+                }else{
+                    res.write('');                    
+                }
+                    
+                    res.end();
+                    console.log('数据查询成功');
+                });
+            });
+
+
+        } else {
+            r.table("sinablog").orderBy(r.desc('blogtime')).without('content').run(connection, function(err, cursor) {
+                if (err) throw err;
+                cursor.toArray(function(err, result) {
+                    if (err) throw err;
+                    res.writeHead(200, {
+                        'Content-Type': 'text/html'
+                    });
+                    
+                    var ret = ejs.render(str1, {
+                        data: result,                        
+                    });
+                    res.write(ret);
+                    res.end();
+                    console.log('数据查询成功');
+                });
+            });
+        }
 
     } else {
         var path = ('./' + req.url.pathname).replace('//', '/').replace(/%(..)/g, function(match, hex) {
