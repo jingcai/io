@@ -166,8 +166,24 @@ StaticServlet.prototype.handleRequest = function(req, res) {
             });
         }
 
+        /*执行git update 命令*/
+    } else if (req.url.pathname.indexOf("/update") == 0) {
+        var exec = require('child_process').exec,
+            last = exec('pushd .. && git pull  && popd');
 
+         res.writeHead(200, {
+            'Content-Type': 'application/json'
+        });
+        
+        last.stdout.on('data', function(data) {
+            res.write(JSON.stringify(data, null, 2))                    
+            console.log('标准输出：' + data);
+        });
 
+        last.on('exit', function(code) {
+            console.log('子进程已关闭，代码：' + code);
+            res.end();
+        });
 
     } else {
         var path = ('./' + req.url.pathname).replace('//', '/').replace(/%(..)/g, function(match, hex) {
