@@ -7,22 +7,22 @@
                             </h4>                                                
                              -->  
                             
-                            <h4 ng-click="category='888'">888网格
+                            <h4 ng-click="category='888';slicedBlog=(blogs|filter:'888');blogChange(slicedBlog);">888网格
                                 <span class="label label-success">{{(blogs|filter:'888').length}}</span>
                             </h4>                                                
-                            <h4 ng-click="category='说说'">说说
+                            <h4 ng-click="category='说说';slicedBlog=(blogs|filter:'说说');blogChange(slicedBlog);">说说
                                 <span class="label label-success">{{(blogs|filter:'说说').length}}</span>
                             </h4>                                                
                             
-                            <h4 ng-click="category='0的'">0的法则
+                            <h4 ng-click="category='0的';slicedBlog=(blogs|filter:'0的');blogChange(slicedBlog);">0的法则
                                 <span class="label label-success">{{(blogs|filter:'0的').length}}</span>
                             </h4>
                             
 
-                            <h4 ng-click="category='卦'">天卦
+                            <h4 ng-click="category='卦';slicedBlog=(blogs|filter:'卦');blogChange(slicedBlog);">天卦
                                 <span class="label label-success">{{(blogs|filter:'卦').length}}</span>
                             </h4>                                                
-                            <h4 ng-click="category=''">全部原创                                
+                            <h4 ng-click="category='';slicedBlog=blogs;blogChange(blogs);">全部原创                                
                                 <span class="label label-info">{{blogs.length}}</span>
                             </h4>    
                                                                                   
@@ -34,7 +34,7 @@
                     </ul>
                     <ul class="pagination" ng-hide="Math.ceil((blogs|filter:category).length/pagesize)==1">
                         <li ng-class="$index==pageStart/pagesize?'active':''"  ng-repeat="blog in blogs.slice(0,Math.ceil((blogs|filter:category).length/pagesize))" >
-                            <span    ng-click="clickPage($index)">{{$index+1}}</span>
+                            <span    ng-click="clickPage($index);blogChange((blogs|filter:category).slice(pageStart,pageStart+pagesize))">{{$index+1}}</span>
                         </li>
                     </ul>
                 </div>

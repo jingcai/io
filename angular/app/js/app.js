@@ -69,7 +69,7 @@ filter('htmlToPlaintext', function() {
 function BlogCtr($scope, $http, $sce, $log, $location) {
     $scope.start = 0;
     $scope.pagesize = 15;
-
+    $scope.slicedBlog=[];
 
     //有两种api 一个是list 一个是单个的
     $http.get('/data/bloglist?start=' + $scope.start + '&limit=500').success(function(data) {
@@ -155,7 +155,15 @@ function BlogCtr($scope, $http, $sce, $log, $location) {
         startRequest(hash);
     }
     $scope.clickPage = function(page) {
-        $scope.pageStart = page * $scope.pagesize;
+        $scope.pageStart = page * $scope.pagesize;        
+    }
+
+    $scope.blogChange=function(change){
+        console.log(change);
+        if(change.length>0){
+            startRequest(change[0].hash)
+        }
+
     }
 
 
