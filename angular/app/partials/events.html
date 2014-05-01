@@ -1,13 +1,13 @@
   <div class="container bs-docs-container" ng-controller="BlogCtr">
         <div class="row">
 
-            <div class="col-md-3" ng-model="category" ng-init="pagesize=20;category='通知'">                
+            <div class="col-md-3" ng-model="category" ng-init="pagesize=50;category='通知'">                
 
                 <div class="bs-docs-sidebar affix-top" data-spy="affix" data-offset-top="240" role="complementary">
 
 
                     <ul class="nav bs-docs-sidenav">
-                        <li ng-repeat="blog in (blogs|filter:category).slice(pageStart,pageStart+pagesize)">
+                        <li ng-repeat="blog in (blogs|filter:category).slice(pageStart,pageStart+pagesize)" ng-class="blog.hash==currenthash?'active':''">
                             <a ng-click="clickBlog(blog.hash)" ng-bind-html="blog.title"></a>
                         </li>
                     </ul>
