@@ -124,6 +124,8 @@ StaticServlet.prototype.handleRequest = function(req, res) {
     // util.puts(JSON.stringify(req.url.query));
     // 自定义url路由
     //数据请求
+console.log('-----%j',req.url);
+
      if (req.url.pathname.indexOf("/data") == 0) {
         //博客数据
         if (req.url.pathname.indexOf("/data/bloglist") == 0) {
