@@ -124,9 +124,18 @@ StaticServlet.prototype.handleRequest = function(req, res) {
     // util.puts(JSON.stringify(req.url.query));
     // 自定义url路由
     //数据请求
-console.log('-----%j',req.url);
 
-     if (req.url.pathname.indexOf("/data") == 0) {
+    //其他网站分发
+    if (req.headers.host&&!(req.headers.host.split('localhost').length == 2||req.headers.host.split('888000.org').length == 2 || req.headers.host.split('jingcai.io').length == 2 || req.headers.host.split('wuzhizhenjing.com').length == 2)) {
+        
+        res.writeHead(200, {
+            'Content-Type': 'text/html'
+        });
+        console.log('还在开发');
+        res.write("Hello World!");
+        res.end();
+
+    } else if (req.url.pathname.indexOf("/data") == 0) {
         //博客数据
         if (req.url.pathname.indexOf("/data/bloglist") == 0) {
             if (req.url.query.start) {
