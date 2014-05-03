@@ -124,7 +124,14 @@ StaticServlet.prototype.handleRequest = function(req, res) {
     // util.puts(JSON.stringify(req.url.query));
     // 自定义url路由
     //数据请求
-    if (req.url.pathname.indexOf("/data") == 0) {
+    if(req.url.hostname.split("888000.org").length==1||req.url.hostname.split("jingcai.io").length==1||req.url.hostname.split("wuzhizhenjing.com").length==1){
+        res.writeHead(200, {
+                        'Content-Type': 'text/html'
+                    });                    
+                    res.write("Hello World!");
+                    res.end();
+
+    } else if (req.url.pathname.indexOf("/data") == 0) {
         //博客数据
         if (req.url.pathname.indexOf("/data/bloglist") == 0) {
             if (req.url.query.start) {
