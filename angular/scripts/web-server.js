@@ -124,12 +124,12 @@ StaticServlet.prototype.handleRequest = function(req, res) {
     // util.puts(JSON.stringify(req.url.query));
     // 自定义url路由
     //数据请求
-    if(req.url.hostname.split("888000.org").length==1||req.url.hostname.split("jingcai.io").length==1||req.url.hostname.split("wuzhizhenjing.com").length==1){
+    if (req.url.hostname.split("888000.org").length == 1 && req.url.hostname.split("jingcai.io").length == 1 && req.url.hostname.split("wuzhizhenjing.com").length == 1) {
         res.writeHead(200, {
-                        'Content-Type': 'text/html'
-                    });                    
-                    res.write("Hello World!");
-                    res.end();
+            'Content-Type': 'text/html'
+        });
+        res.write("Hello World!");
+        res.end();
 
     } else if (req.url.pathname.indexOf("/data") == 0) {
         //博客数据
@@ -193,7 +193,7 @@ StaticServlet.prototype.handleRequest = function(req, res) {
         });
         /*seo 方案*/
     } else if (req.url.pathname.indexOf("/archive.html") == 0) {
-        var ejs = require('ejs'),            
+        var ejs = require('ejs'),
             path = '../app/archive.ejs',
             str1 = fs.readFileSync(path, 'utf8');
         if (req.url.search) {
@@ -203,17 +203,17 @@ StaticServlet.prototype.handleRequest = function(req, res) {
             }).run(connection, function(err, cursor) {
                 if (err) throw err;
                 cursor.toArray(function(err, result) {
-                    if (err) throw err;                    
+                    if (err) throw err;
                     res.writeHead(200, {
-                        'Content-Type':'text/html'
+                        'Content-Type': 'text/html'
                     });
-                    
-                    if (result.length>0) {
-                    res.write(result[0].content);                        
-                }else{
-                    res.write('');                    
-                }
-                    
+
+                    if (result.length > 0) {
+                        res.write(result[0].content);
+                    } else {
+                        res.write('');
+                    }
+
                     res.end();
                     console.log('数据查询成功');
                 });
@@ -228,9 +228,9 @@ StaticServlet.prototype.handleRequest = function(req, res) {
                     res.writeHead(200, {
                         'Content-Type': 'text/html'
                     });
-                    
+
                     var ret = ejs.render(str1, {
-                        data: result,                        
+                        data: result,
                     });
                     res.write(ret);
                     res.end();
