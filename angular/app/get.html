@@ -19,7 +19,7 @@
 
     <!-- Documentation extras -->
     <link href="./get_files/docs.css" rel="stylesheet">
-    
+
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -50,7 +50,7 @@
     .pagination > li {
         display: inline;
     }
-    .pagination>li>a:hover, .pagination>li>span:hover, .pagination>li>a:focus, .pagination>li>span:focus{
+    .pagination>li>a:hover, .pagination>li>span:hover, .pagination>li>a:focus, .pagination>li>span:focus {
         color: #fff;
         background: #c1c1c1;
     }
@@ -87,7 +87,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="/" target="_blank" class="navbar-brand"><span ng-bind-html="header"></span></a>
+                <a href="/" target="_blank" class="navbar-brand">
+                    <span ng-bind-html="header"></span>
+                </a>
             </div>
             <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
                 <ul class="nav navbar-nav">
@@ -118,7 +120,7 @@
             <h1 style='margin-top:40px'>
                 <span ng-bind-html='currentHeader[1]'></span>
             </h1>
-            
+
             <p ng-bind-html='currentHeader[2]'></p>
         </div>
     </div>
@@ -141,9 +143,9 @@
 
     <!-- Footer
     ================================================== -->
-   <footer class="bs-docs-footer" role="contentinfo">
+    <footer class="bs-docs-footer" role="contentinfo">
         <div class="container">
-            <p>沪ICP备14008869号 </p>
+            <p>沪ICP备14008869号</p>
             <ul class="bs-docs-footer-links muted">
                 <li><a target="_blank" href="http://qun.qzone.qq.com/group/276681785">晶彩家园QQ群：276681785</a>
                 </li>
@@ -152,7 +154,8 @@
                 </li>
                 <li>&middot;</li>
                 <li><a target="_blank" href="http://y.baidu.com/jingcai">百度原创音乐 · 晶彩乐团</a>
-                </li><li>               
+                </li>
+                <li>
             </ul>
         </div>
     </footer>
@@ -169,6 +172,11 @@
     <script src="/js/controllers.js "></script>
     <script src="/js/filters.js "></script>
     <script src="/js/directives.js "></script>
+
+    <script type="text/javascript">
+    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F41d277fe5719a6c0555d7f6f5592ee2c' type='text/javascript'%3E%3C/script%3E"));
+    </script>
 
 
 </body>
